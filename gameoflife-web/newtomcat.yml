@@ -1,0 +1,49 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: install apache2
+      package:
+        name: apache2
+        state: present
+    - name: install jdk
+      package:
+        name: default-jdk
+        state: present
+    - name: copy env var
+      copy:
+        src: /home/jenkins/playbooks/environment
+        dest: /etc/environment
+    - name: start the apache2 service
+      service:
+        name: apache2
+        state: restarted
+    - name: install tomcat7
+      package:
+        name: tomcat7
+        state: present
+    - name: restart the tomcat7 service
+      service:
+        name: tomcat7
+        state: restarted
+    - name: install tomcat7-docs
+      package:
+        name: tomcat7-docs
+    - name: install tomcat7-admin
+      package:
+        name: tomcat7-admin
+    - name: install tomcat7-examples
+      package:
+        name: tomcat7-examples
+        state: present
+    - name: cop tomcatuser file
+      copy:
+        src: /home/jenkins/plabooks/tomcat-users.xml
+        dest: /etc/tomcat7/tomcat-users.xml
+    - name: restart the tomcat7 service
+      service:
+        name: tomcat7
+        state: restarted
+
+
+
