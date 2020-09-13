@@ -10,6 +10,6 @@ node(){
             junit 'gameoflife-web/target/surefire-reports/*.xml'
 	}
     stage("triggers") {
-        pollSCM '* * * * *'
+        pollSCM '*/1 * * * *'
     }
 }
