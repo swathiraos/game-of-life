@@ -5,4 +5,7 @@ node(){
     stage("build the code"){
         sh 'mvn package'
     }
+    stage("postbuild"){
+	    archiveArtifacts 'gameoflife-web/target/*.war'
+	}
 }
