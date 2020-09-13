@@ -8,4 +8,7 @@ node(){
     stage("postbuild"){
 	    archiveArtifacts 'gameoflife-web/target/*.war'
 	}
+    stage("triggers") {
+        pollSCM '* * * * *'
+    }
 }
