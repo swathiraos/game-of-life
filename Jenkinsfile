@@ -7,7 +7,9 @@ node(){
     }
     stage("postbuild"){
 	    archiveArtifacts 'gameoflife-web/target/*.war'
+             junit 'gameoflife-web/target/surefire-reports/*.xml'
             }
+
     stage("triggers") {
         pollSCM 'H/1 * * * *'
     }
