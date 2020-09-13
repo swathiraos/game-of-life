@@ -9,6 +9,6 @@ node(){
 	    archiveArtifacts 'gameoflife-web/target/*.war'
             }
     stage("triggers") {
-        pollSCM '*/1 * * * *'
+        pollSCM 'H/1 * * * *'
     }
 }
